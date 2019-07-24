@@ -1,0 +1,9 @@
+#my_canvas {
+    position: absolute;
+    top: -150px;
+    width: 155px;
+    height: 155px;
+    border-style: none;
+    /* dashed: #CCC; */
+
+}

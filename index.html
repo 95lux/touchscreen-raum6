@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Topografie Brocken</title>
+
+    <link href="public/bro_r1.css" rel="stylesheet" type="text/css">
+    <link href="public/loader.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="src/index.js" defer></script>
+
+</head>
+
+<body>
+
+    <canvas id="my_canvas" width="190" height="190"></canvas>
+
+    <div class="bg_thema">
+
+        <div class="silhouette">
+
+            <div class="icons">
+
+                <div class="iconwidth">
+                    <a class="iconfield" >
+                        <img src="public/icons/geologie.png" width="150" height="150" alt=""/><br>
+                        <h1>Geologie</h1>
+                    </a>
+                </div>
+
+                <div class="iconwidth">
+                    <a class="iconfield" onclick="index.send(event, 'A-2_0', 'B-2_0', 'C-2_0')" href="/klima.html">
+                        <img src="public/icons/klima.png" width="150" height="150" alt=""/><br>
+                        <h1>Klima</h1>
+                    </a>
+                </div>
+
+                <div class="iconwidth">
+                    <a class="iconfield" onclick="index.send(event, 'A-3_0', 'B-3_0', 'C-3_0')" href="/lebensraeume.html" >
+                        <img src="public/icons/lebensraeume.png" width="150" height="150" alt=""/><br>
+                        <h1>Lebensräume</h1>
+                    </a>
+                </div>
+
+                <div class="iconwidth">
+                    <a class="iconfield" >
+                        <img src="public/icons/naturschutz.png" width="150" height="150" alt=""/><br>
+                        <h1>Naturschutz</h1>
+                    </a>
+                </div>
+
+                <div class="iconwidth">
+                    <a class="iconfield" >
+                        <img src="public/icons/besuch.png" width="150" height="150" alt=""/><br>
+                        <h1>Besuch</h1>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

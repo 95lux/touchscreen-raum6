@@ -1,0 +1,151 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html {
+    overflow: hidden;
+    cursor: none;
+    touch-action: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.bg_thema {
+    width: 1920px;
+    height: 1080px;
+    background-image:url("/public/images/bg_main.jpg");
+    z-index: 23;
+}
+
+.bg_klima {
+  width: 1920px;
+  height: 1080px;
+  background-image:url("/public/images/bg_klima.jpg");
+  z-index: 23;
+}
+
+
+.silhouette {
+    width: 1920px;
+    height: 1080px;
+    background-image:url("/public/images/silhouette.png") ;
+    background-repeat: no-repeat;
+    z-index: 235;
+    background-position: bottom;
+}
+
+.icons {
+    align-content: center;
+    width: 1820px;
+    height: 280px;
+    z-index: 2350;
+    position: absolute;
+    top: 800px;
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+    align-content: center;
+    left: 100px;
+}
+
+.iconfield:hover {
+
+  text-decoration:none;
+  color:#FFFFFF;
+  font-size: 18pt;
+
+}
+
+.iconfield {
+  cursor:pointer;
+  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  text-align:center;
+  margin-top:0px;
+  width:150px;
+  height:180px;
+  text-decoration:none;
+  color: #fff;
+  font-size: 18pt;
+  display: grid;
+    outline: none;
+
+}
+
+.iconfiled:image:hover {
+
+  border-image: 8px;
+
+}
+
+
+.iconfield:hover {
+
+  text-decoration:none;
+  color:#FFFFFF;
+  font-size: 18pt;
+
+
+}
+.iconwidth {
+  width: 200px;
+  display: table-cell;
+
+}
+
+
+h1{
+    display:inline;
+    background-color:#25313b;
+    color:#fff;
+    font-size: 18pt;
+    padding: 25px;
+}
+
+.subs {
+
+  align-content: center;
+  width: 1820px;
+  height: 280px;
+  z-index: 2350;
+  position: absolute;
+  top: 400px;
+  display: table;
+  width: 100%; /*Optional*/
+  table-layout: fixed; /*Optional*/
+  border-spacing: 10px; /*Optional*/
+  align-content: center;
+    left: 100px;
+
+
+}
+
+.klima {
+ position: fixed;
+ left: 100px;
+    top: 50px;
+    z-index: 50;
+
+}
+
+
+
+
+.klima_head {
+    z-index: 2;
+ position: fixed;
+ left: 340px;
+    top: 140px;
+    font-size: 60pt;
+     font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  margin-top:0px;
+  text-decoration:none;
+  color: #fff;
+    background-color:#25313b;
+    padding: 12px;
+    padding-left: 80px;
+
+
+}
