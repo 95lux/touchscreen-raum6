@@ -8,7 +8,7 @@ var response = function(err, bytes) {
 
 // Diese Funktion erwartet die connection daten zum verbinden mit dem udp server
 module.exports = (connection) => {
-
+    console.log(connection)
     // danach wird eine methode zurückgesendet, hier in
     return {
         send: (message, callback) => {

@@ -4,52 +4,37 @@ var Server = require('./http.js');
 var udpClient = require('./udpClient.js');
 var udpServer = require('./udpServer.js');
 var socketServer = require('./socketserver.js');
+var config = require('../config.js');
 
-const udpServers = [{
-    // host: '192.168.235.201',
-    host: '127.0.0.1',
-    port: 5000
-}]
-
-const udpClients = [{
-    host: '192.168.235.42',
-    port: 5000
-}, {
-    host: '192.168.235.201',
-    port: 5000
-}, {
-    host: '192.168.235.200',
-    port: 5000
-}];
-
-var httpServer = new Server(3000);
+var httpServer = new Server(config.httpPort, 'localhost');
 
 // start udp server with given connection information
-udpServer(udpServers[0], socketServer);
+udpServer(config.udpServers[0], socketServer);
 
-var templateBaseURL = __dirname + '/../';
+var templateBaseURL = __dirname + '/../templates/';
 
 // serve static html pages
 // beispiel: http://localhost:3000/klima
 httpServer.app.get('/:page?', (req, res, next) => {
-    var page = req.params.page || 'index';
+    var page = req.params.page || 'index.html';
 
-    res.sendFile(path.join(templateBaseURL + page + '.html'));
+    res.sendFile(path.join(templateBaseURL + page));
 })
 
 // beispiel: http://localhost:3000/0/play/A-2_0
-httpServer.app.get('/:connection/:event/:video', (req, res, next) => {
-
+httpServer.app.get('/send/:connection/:event/:video', (req, res, next) => {
+    console.log(config)
+    console.log(req.params)
     // hol dir aus dem array die connection
-    var connection = udpClients[req.params.connection]
+    var connection = config.udpClients[req.param.connection];
 
     // event ist play oder pause oder stop
-    var eventType = req.params.event
+    var eventType = req.param.event
 
     // video steht für das video, welches abgespielt werden soll
-    var video = req.params.video
+    var video = req.param.video
 
-    udpClient(connection).send(req.params.video, (error, bytes) => {
+    udpClient(connection).send(req.param.video, (error, bytes) => {
 
         res.json({
             error: error,

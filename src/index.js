@@ -1,5 +1,6 @@
 var socketIO = require('socket.io-client');
 var axios = require('axios');
+var config = require('../config.js');
 
 // loaderApp variables
 var ctx = document.getElementById('my_canvas').getContext('2d');
@@ -17,8 +18,7 @@ function log(data) {
     console.log(data)
 }
 
-
-export function send(event, action1, action2, action3) {
+function send(event, action1, action2, action3) {
 
     // stops following href url in link and stay
     // event.preventDefault();
@@ -28,13 +28,13 @@ export function send(event, action1, action2, action3) {
     // http://localhost:3000/play/wetter
     // then success
     // catch error
-    axios.get("http://localhost:3000/0/play/" + action1).then(log).catch(log);
-    axios.get("http://localhost:3000/1/play/" + action2).then(log).catch(log);
-    axios.get("http://localhost:3000/2/play/" + action3).then(log).catch(log);
+    axios.get(`http://localhost:${config.httpPort}/send/0/play/` + action1).then(log).catch(log);
+    axios.get(`http://localhost:${config.httpPort}/send/1/play/` + action2).then(log).catch(log);
+    axios.get(`http://localhost:${config.httpPort}/send/2/play/` + action3).then(log).catch(log);
 }
 
 // socket.io client io
-var socket = socketIO('http://localhost:5002');
+var socket = socketIO(`http://localhost:${config.socketPort}`);
 
 //socket.io events
 socket.on('connection', function() {

@@ -27,7 +27,7 @@ module.exports = (connection, socketServer) => {
 
     server.on('listening', () => {
         const address = server.address();
-        console.log(`UDP-Server listening ${address.address}:${address.port}`);
+        console.log(`🚀 UDP-Server listening ${address.address}:${address.port}`);
     });
 
     server.bind(connection.port, connection.host);
