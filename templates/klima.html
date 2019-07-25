@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Topografie Brocken</title>
-<link href="public/bro_r1.css" rel="stylesheet" type="text/css">
+<link href="/public/app.css" rel="stylesheet" type="text/css">
 <link href="public/loader.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="src/index.js" defer></script>
+<script type="text/javascript" src="/public/app.js" defer></script>
 
 
 
@@ -32,14 +32,14 @@
 		<div class="subs">
 
 			<div class="iconwidth">
-				<a class="iconfield" onclick="index.send(event, 'A-2_1', 'B-2_1', 'C-2_1')">
+				<a class="iconfield" onclick="sendEvent(event, 'A-2_1', 'B-2_1', 'C-2_1')">
 					<img src="public/images/play.png" width="150" height="150" alt=""/><br>
 					<h1>Wetter</h1>
 				</a>
 		  </div>
 
 			<div class="iconwidth">
-				<a class="iconfield" onclick="index.send(event, 'A-2_2', 'B-2_2', 'C-2_2')">
+				<a class="iconfield" onclick="sendEvent(event, 'A-2_2', 'B-2_2', 'C-2_2')">
 					<img src="public/images/play.png" width="150" height="150" alt=""/><br>
 					<h1>Wetter-<br>phänomene</h1>
 				</a>

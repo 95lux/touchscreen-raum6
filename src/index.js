@@ -18,7 +18,7 @@ function log(data) {
     console.log(data)
 }
 
-function send(event, action1, action2, action3) {
+window.sendEvent = function(event, action1, action2, action3) {
 
     // stops following href url in link and stay
     // event.preventDefault();

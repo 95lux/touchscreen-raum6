@@ -1,6 +1,6 @@
 # Touchscreen Interface
 
-Jonas proudly presents an beautiful Touchscreen Interface
+Jonas proudly presents a beautiful Touchscreen Interface
 
 ## Install
 
