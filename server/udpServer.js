@@ -14,13 +14,14 @@ module.exports = (connection, socketServer) => {
 
     server.on('message', (msg, rinfo) => {
         console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-
         if (msg == 'start') {
             socketServer.socketSend('transport', msg);
         }
 
         if (isNaN(msg) == false && msg != 'start') {
-            socketServer.socketSend('duration', msg);
+            socketServer.socketSend('duration', msg.toString());
+            // console.log(`${msg} send to socketclient`);
+
         }
 
     });

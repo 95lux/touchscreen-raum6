@@ -126,9 +126,10 @@ h1{
 }
 
 #my_canvas {
-    position: absolute;
-    top: -150px;
+    /* position: absolute; */
+    top: 150px;
     width: 155px;
     height: 155px;
     border-style: none;
+    z-index: 9000;
 }

@@ -3,7 +3,7 @@ module.exports = {
     httpPort: 4100,
     udpServers: [{
         // host: '192.168.235.201',
-        host: '127.0.0.1',
+        host: '192.168.235.201',
         port: 5000
     }],
     udpClients: [{
