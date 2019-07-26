@@ -1,11 +1,11 @@
 var express = require('express');
 var httpServer = express();
+var config = require("../config.js")
 
 module.exports = class Server {
 
     constructor(port, adress) {
         this.app = httpServer
-
         this.port = port || 3000
         this.adress = adress
     }

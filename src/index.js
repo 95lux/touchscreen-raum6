@@ -6,7 +6,6 @@ var config = require('../config.js');
 var ctx = document.getElementById('my_canvas').getContext('2d');
 var al = 0;
 var sim = setInterval(progressSim, 50);
-
 // atl =  time to load in ms
 var atl = 12000;
 var start = 4.72
@@ -28,9 +27,9 @@ window.sendEvent = function(event, action1, action2, action3) {
     // http://localhost:3000/play/wetter
     // then success
     // catch error
-    axios.get(`http://localhost:${config.httpPort}/send/0/play/` + action1).then(log).catch(log);
-    axios.get(`http://localhost:${config.httpPort}/send/1/play/` + action2).then(log).catch(log);
-    axios.get(`http://localhost:${config.httpPort}/send/2/play/` + action3).then(log).catch(log);
+    axios.get(`http://localhost:${config.httpPort}/send/0/` + action1).then(log).catch(log);
+    axios.get(`http://localhost:${config.httpPort}/send/1/` + action2).then(log).catch(log);
+    axios.get(`http://localhost:${config.httpPort}/send/2/` + action3).then(log).catch(log);
 }
 
 // socket.io client io

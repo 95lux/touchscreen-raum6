@@ -17,19 +17,21 @@ var templateBaseURL = __dirname + '/../templates/';
 // beispiel: http://localhost:3000/klima
 httpServer.app.get('/:page?', (req, res, next) => {
     var page = req.params.page || 'index.html';
-
+    
     res.sendFile(path.join(templateBaseURL + page));
 })
 
 // beispiel: http://localhost:3000/0/play/A-2_0
-httpServer.app.get('/send/:connection/:event/:video', (req, res, next) => {
-    console.log(config)
-    console.log(req.params)
+httpServer.app.get('/send/:connection/:video', (req, res, next) => {
+    // console.log(config)
+    // console.log(req.params)
+    console.log(config.udpClients[req.param.connection]);
+    console.log(config.udpClients[req.param.video]);
     // hol dir aus dem array die connection
     var connection = config.udpClients[req.param.connection];
 
     // event ist play oder pause oder stop
-    var eventType = req.param.event
+    // var eventType = req.param.event
 
     // video steht für das video, welches abgespielt werden soll
     var video = req.param.video
