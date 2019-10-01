@@ -19,7 +19,7 @@ module.exports = class Server {
         this.app.use('/public', express.static(__dirname + '/../public'));
 
         this.app.listen(this.port, this.adress, () => {
-            console.log(`🚀 HTTP Server listening on ${this.adress}:${this.port}!`);
+            console.log(`HTTP Server listening on ${this.adress}:${this.port}!`);
         });
     }
 

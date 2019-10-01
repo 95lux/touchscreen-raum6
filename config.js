@@ -1,19 +1,22 @@
 module.exports = {
-    socketPort: 50012,
-    httpPort: 4100,
+    socketPort: 5012,
+    httpPort: 3000,
     udpServers: [{
-        // host: '192.168.235.201',
-        host: '192.168.235.201',
+        host: '192.168.200.210',
+        // host: '127.0.0.1',
         port: 5000
     }],
     udpClients: [{
-        host: '192.168.235.42',
+        //VideoServer MadMapper
+        host: '192.168.200.66',
         port: 5000
     }, {
-        host: '192.168.235.201',
+        //Brightsign Monitor
+        host: '192.168.200.12',
         port: 5000
     }, {
-        host: '192.168.235.200',
+        //Tuomi Beacon Mediaguide
+        host: '192.168.200.202',
         port: 5000
     }]
 };

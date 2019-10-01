@@ -5,7 +5,7 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 http.listen(config.socketPort, function () {
-    console.log(`🚀 SocketServer listening on ${config.socketPort}`);
+    console.log(`SocketServer listening on ${config.socketPort}`);
 });
 
 io.on('connection', function(socket) {

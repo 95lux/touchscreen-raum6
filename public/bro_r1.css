@@ -1,25 +1,12 @@
 @charset "UTF-8";
-
-html {
-    overflow: hidden;
-    /* cursor: none; */
-    touch-action: none;
-    outline-style:none;
-    box-shadow:none;
-    border-color:transparent;
+/* CSS Document */
+html{
+	overflow:hidden;
+	cursor:none;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-}
+/* Info Button */
 
-a:focus {
-    outline: 0;
-    outline-style:none;
-    box-shadow:none;
-    border-color:transparent;
-}
 
 .popup {
   display: none;
@@ -60,6 +47,14 @@ a:focus {
 }
 
 /* Content */
+
+
+
+
+
+
+
+
 
 .bg_thema {
   width: 1920px;
@@ -322,13 +317,4 @@ h1{
 	padding-left: 80px;
 
 
-}
-
-#my_canvas {
-    position: absolute;
-    top: 150px;
-    width: 155px;
-    height: 155px;
-    border-style: none;
-    z-index: 9000;
 }

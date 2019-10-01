@@ -3,7 +3,7 @@ var axios = require('axios');
 var config = require('../config.js');
 
 // loaderApp variables
-var ctx = document.getElementById('loader_canvas').getContext('2d');
+var ctx = document.getElementById('my_canvas').getContext('2d');
 var al = 0;
 
 // atl =  time to load in ms
@@ -13,9 +13,9 @@ var cw = ctx.canvas.width;
 var ch = ctx.canvas.height;
 var diff;
 
-function log(data) {
-    console.log(data)
-}
+// function log(data) {
+//     console.log(data)
+// }
 
 window.sendEvent = function(event, action1, action2, action3) {
 
@@ -69,3 +69,14 @@ socket.on('duration', function(msg) {
             // console.log(`${al} / ${atl}`);
         }
 });
+
+$ = function(id) {
+  return document.getElementById(id);
+}
+
+var show = function(id) {
+	$(id).style.display ='block';
+}
+var hide = function(id) {
+	$(id).style.display ='none';
+}

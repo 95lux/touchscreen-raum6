@@ -10847,21 +10847,24 @@ module.exports.default = axios;
 module.exports = require('./lib/axios');
 },{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"../config.js":[function(require,module,exports) {
 module.exports = {
-  socketPort: 50012,
-  httpPort: 4100,
+  socketPort: 5012,
+  httpPort: 3000,
   udpServers: [{
-    // host: '192.168.235.201',
-    host: '192.168.235.201',
+    host: '192.168.200.210',
+    // host: '127.0.0.1',
     port: 5000
   }],
   udpClients: [{
-    host: '192.168.235.42',
+    //VideoServer MadMapper
+    host: '192.168.200.66',
     port: 5000
   }, {
-    host: '192.168.235.201',
+    //Brightsign Monitor
+    host: '192.168.200.12',
     port: 5000
   }, {
-    host: '192.168.235.200',
+    //Tuomi Beacon Mediaguide
+    host: '192.168.200.202',
     port: 5000
   }]
 };
@@ -10873,18 +10876,16 @@ var axios = require('axios');
 var config = require('../config.js'); // loaderApp variables
 
 
-var ctx = document.getElementById('loader_canvas').getContext('2d');
+var ctx = document.getElementById('my_canvas').getContext('2d');
 var al = 0; // atl =  time to load in ms
 
 var atl = 10000;
 var start = 4.72;
 var cw = ctx.canvas.width;
 var ch = ctx.canvas.height;
-var diff;
-
-function log(data) {
-  console.log(data);
-}
+var diff; // function log(data) {
+//     console.log(data)
+// }
 
 window.sendEvent = function (event, action1, action2, action3) {
   // stops following href url in link and stay
@@ -10932,6 +10933,18 @@ socket.on('duration', function (msg) {
     al++; // console.log(`${al} / ${atl}`);
   }
 });
+
+$ = function $(id) {
+  return document.getElementById(id);
+};
+
+var show = function show(id) {
+  $(id).style.display = 'block';
+};
+
+var hide = function hide(id) {
+  $(id).style.display = 'none';
+};
 },{"socket.io-client":"../node_modules/socket.io-client/lib/index.js","axios":"../node_modules/axios/index.js","../config.js":"../config.js"}],"../../../../../../../../home/jlx/.nvm/versions/node/v12.6.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -10960,7 +10973,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65261" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51032" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
