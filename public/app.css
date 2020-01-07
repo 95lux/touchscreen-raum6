@@ -2,11 +2,15 @@
 
 html {
     overflow: hidden;
-    /* cursor: none; */
+    cursor: none;
     touch-action: none;
     outline-style:none;
     box-shadow:none;
     border-color:transparent;
+}
+
+#selector {
+    cursor: none;
 }
 
 body {
@@ -20,6 +24,10 @@ a:focus {
     box-shadow:none;
     border-color:transparent;
 }
+
+/* h1, h2 {
+    display: inline;
+} */
 
 .popup {
   display: none;
@@ -165,6 +173,7 @@ a:focus {
   color: #fff;
   font-size: 18pt;
   display: grid;
+  /* display: inline; */
 
 }
 

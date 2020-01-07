@@ -2,6 +2,8 @@ var path = require('path');
 var Server = require('./http.js');
 
 var udpClient = require('./udpClient.js');
+var oscClient = require('./oscClient.js');
+var oscClientMax = require('./oscClientMax.js');
 var udpServer = require('./udpServer.js');
 var socketServer = require('./socketserver.js');
 var config = require('../config.js');
@@ -22,21 +24,43 @@ httpServer.app.get('/:page?', (req, res, next) => {
 })
 
 // beispiel: http://localhost:3000/0/A-2_0
-httpServer.app.get('/send/:connection/:video', (req, res, next) => {
+// httpServer.app.get('/send/:connection/:video', (req, res, next) => {
+//
+//     // var connection = config.udpClients[req.params.connection];
+//     var videoName = req.params.video
+//
+//
+//     oscClient(videoName, (error, bytes) => {
+//
+//       if (error) {
+//         res.json({
+//           error: error
+//         })
+//       }
+//
+//       res.json({
+//         command: req.params.action,
+//         bytes: bytes
+//       })
+//     })
+//
+//     oscClientMax(videoName, (error, bytes) => {
+//
+//       if (error) {
+//         res.json({
+//           error: error
+//         })
+//       }
+//
+//       res.json({
+//         command: req.params.action,
+//         bytes: bytes
+//       })
+//     })
+//
+// })
 
-    var connection = config.udpClients[req.params.connection];
-    var videoName = req.params.video
 
-    udpClient(connection).send(videoName, (error, bytes) => {
 
-        res.json({
-            error: error,
-            video: videoName,
-            connection: connection,
-            bytes: bytes
-        })
-    })
-
-})
 
 httpServer.run()

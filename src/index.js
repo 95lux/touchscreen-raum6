@@ -1,82 +1,124 @@
-var socketIO = require('socket.io-client');
+var io = require('socket.io-client');
 var axios = require('axios');
 var config = require('../config.js');
 
-// loaderApp variables
-var ctx = document.getElementById('my_canvas').getContext('2d');
-var al = 0;
+// socket.io client io
+var socket = io(`http://localhost:${config.socketPort}`, {
+    forceNew: true,
+    reconnection: true,
+    reconnectionDelay: 8000,
+    reconnectionAttempts: 99999
+});
 
+// loaderApp variables
+var ctx = document.getElementById('loader_canvas').getContext('2d');
+var al = 0;
 // atl =  time to load in ms
-var atl = 10000;
+var atl = 0;
 var start = 4.72
 var cw = ctx.canvas.width;
 var ch = ctx.canvas.height;
 var diff;
 
-// function log(data) {
-//     console.log(data)
-// }
+var isBlocked = false
 
-window.sendEvent = function(event, action1, action2, action3) {
+var strokeStyles = ['#ff8228',
+                    '#c7ff36',
+                    '#ffcd48'];
 
-    // stops following href url in link and stay
+var videoDurations =    [170000,
+                         143000,
+                         140000];
+function log(data) {
+    console.log(data)
+}
+function startIdle(){
+    // start idle event after loading page
+    // axios.get(`http://localhost:${config.httpPort}/send/0/C-IDLE`).then(log).catch(log);
+    console.log('test');
+    socket.emit('video', 'C-IDLE');
+
+}
+window.onload = startIdle();
+
+
+window.sendEvent = function(event, action1) {
+    var category = action1.substring(2,3);
+    category = parseInt(category, 10)
+    console.log(category);
+    console.log(strokeStyles[category]);
     // event.preventDefault();
 
-    console.log(event, action1, action2, action3);
+    if (isBlocked) {
+        //VIDEO BLOCK HIER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // event.preventDefault();
+        console.log('video blocked!');
+        return false;
 
-    // http://localhost:3000/play/wetter
-    // then success
-    // catch error
-    axios.get(`http://localhost:${config.httpPort}/send/0/` + action1).then(log).catch(log);
-    axios.get(`http://localhost:${config.httpPort}/send/1/` + action2).then(log).catch(log);
-    axios.get(`http://localhost:${config.httpPort}/send/2/` + action3).then(log).catch(log);
+    } else {
+        ctx.strokeStyle = strokeStyles[category-1];
+
+        // axios.get(`http://localhost:${config.httpPort}/send/0/` + action1).then(log).catch(log);
+        // console.log(action1);
+        socket.emit('video', action1);
+    }
+    //VIDEO BLOCK HIER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // if (isBlocked) {
+            //     console.log('bar blocked');
+            //     return false
+            // }
+            //isBlocked = true
+                atl = videoDurations[action1.substring(2,3) - 1];
+                function progressSim() {
+                        diff = ((al / atl*50) * Math.PI * 2 * 10).toFixed(2);
+                        ctx.clearRect(0, 0, cw, ch);
+                        ctx.lineWidth = 19;
+
+                        // ctx.strokeStyle = "#09F";
+                        ctx.beginPath();
+                        // .arc(x, y, radius, startAngle, endAngle [, anticlockwise]);
+                        ctx.arc(150, 152, 128, start, diff/10+start, false);
+                        ctx.stroke();
+                        if (al >= (atl/50)) {
+                            clearTimeout(sim);
+                            console.log('video finished');
+                            ctx.clearRect(0, 0, cw, ch);
+                            al = 0;
+                            // window.location.href = "/index.html"
+                            // document.getElementsByclassName('popup').style.display ='none';
+                            var x = document.getElementsByClassName("popup");
+                            var i;
+                            for (i = 0; i < x.length; i++) {
+                                x[i].style.display = 'none';
+                            }
+                            // send idle event after playing video
+                            startIdle();
+                        }
+                        al++;
+                }
+                var sim = setInterval(progressSim, 50)
+                // setTimeout(function () {
+                //     isBlocked = false
+                //     console.log('bar unblocked');
+                // }, msgDuration)
 }
 
-// socket.io client io
-var socket = socketIO(`http://localhost:${config.socketPort}`);
+
 
 //socket.io events
-socket.on('connection', function() {
-    console.log('client connected to server!');
-});
+// socket.on('connection', function() {
+//     console.log('client connected to server!');
+// });
+//
+//
+// socket.on('videoNumber', function(msg) {
+//     console.log(msg);
+//
+// });
 
-socket.on('transport', function(msg) {
-    console.log('start is emited!');
-});
 
-socket.on('duration', function(msg) {
-    var sim = setInterval(progressSim, 50)
-    atl = msg;
-    console.log(atl);
-    function progressSim() {
 
-            diff = ((al / atl*50) * Math.PI * 2 * 10).toFixed(2);
-            ctx.clearRect(0, 0, cw, ch);
-            ctx.lineWidth = 10;
-            ctx.strokeStyle = "#09F";
-            ctx.beginPath();
 
-            // .arc(x, y, radius, startAngle, endAngle [, anticlockwise]);
-            ctx.arc(77.5, 77.5, 72.5, start, diff / 10 + start, false);
-            ctx.stroke();
-            if (al >= (atl/50)) {
-                clearTimeout(sim);
-                console.log('video finished');
-                ctx.clearRect(0, 0, cw, ch);
-                al = 0;
-            }
-            al++;
-            // console.log(`${al} / ${atl}`);
-        }
-});
-
-$ = function(id) {
-  return document.getElementById(id);
-}
-
-var show = function(id) {
-	$(id).style.display ='block';
-}
-var hide = function(id) {
-	$(id).style.display ='none';
+window.show = function (id){
+    document.getElementById(id).style.display ='block';
 }

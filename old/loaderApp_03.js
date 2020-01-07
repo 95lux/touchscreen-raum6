@@ -10,10 +10,10 @@ function progressSim(){
     diff = ((al / 100) * Math.PI*2*10).toFixed(2);
     ctx.clearRect(0, 0, cw, ch);
     ctx.lineWidth = 19;
-    ctx.fillStyle = '#bad74f';
-    ctx.strokeStyle = "#bad74f";
+    ctx.fillStyle = '#c7ff36';
+    ctx.strokeStyle = "#c7ff36";
     ctx.beginPath();
-    ctx.arc(150, 154, 132, start, diff/10+start, false);
+    ctx.arc(150, 152, 128, start, diff/10+start, false);
     ctx.stroke();
     if(al >= 100){
         clearTimeout(sim);
@@ -23,20 +23,3 @@ al++;
 }
 
 var sim = setInterval(progressSim, 50);
-
-
-
-
-
-
-
-$ = function(id) {
-  return document.getElementById(id);
-}
-
-var show = function(id) {
-	$(id).style.display ='block';
-}
-var hide = function(id) {
-	$(id).style.display ='none';
-}
