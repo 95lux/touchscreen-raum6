@@ -42,7 +42,13 @@ function startIdle(){
 window.onload = startIdle();
 
 
-window.sendEvent = function(event, action1) {
+window.clickHandler = function(event, action1, popup) {
+    sendEvent(event, action1);
+    show(event, popup);
+}
+
+sendEvent = function(event, action1) {
+    // console.log(event);
     var category = action1.substring(2,3);
     category = parseInt(category, 10)
     console.log(category);
@@ -119,6 +125,14 @@ window.sendEvent = function(event, action1) {
 
 
 
-window.show = function (id){
-    document.getElementById(id).style.display ='block';
+show = function (event, id){
+    // console.log(event);
+    // console.log(event.sourceCapabilities.firesTouchEvents);
+    // if(event.type == "click" && event.sourceCapabilities.firesTouchEvents) {
+    //     console.log("touch via mousdown event triggered");
+    //     return;
+    // } else {
+        document.getElementById(id).style.display ='block';
+    // }
+
 }
