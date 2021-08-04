@@ -1,6 +1,6 @@
 # Touchscreen Interface
 
-Jonas proudly presents a beautiful Touchscreen Interface
+vanilla JS Touchscreen Interface with socket.io and parcel
 
 ## Install
 
